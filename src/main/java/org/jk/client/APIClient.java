@@ -21,4 +21,8 @@ public class APIClient {
     public ResponseEntity<String> getPlanetById(int planetId) {
         return restTemplate.getForEntity(BASE_URL + "planets/" + planetId, String.class);
     }
+
+    public ResponseEntity<String> getPersonById(int i) {
+        return restTemplate.getForEntity(BASE_URL + "people/" + i, String.class);
+    }
 }

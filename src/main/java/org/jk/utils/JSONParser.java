@@ -2,6 +2,7 @@ package org.jk.utils;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
+import org.jk.model.Person;
 import org.jk.model.Planet;
 
 public class JSONParser {
@@ -9,6 +10,7 @@ public class JSONParser {
         DocumentContext json = JsonPath.parse(jsonString);
         return switch (clazz.getSimpleName()) {
             case "Planet" -> (T) new Planet().parse(json);
+            case "Person" -> (T) new Person().parse(json);
             default -> throw new IllegalArgumentException("Unknown class type: " + clazz.getSimpleName());
         };
     }
