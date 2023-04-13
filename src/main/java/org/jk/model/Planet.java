@@ -1,7 +1,6 @@
-package org.jk;
+package org.jk.model;
 
 import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
 
 public class Planet {
     private String name;
@@ -14,11 +13,7 @@ public class Planet {
     private String surfaceWater;
     private String population;
 
-    public static Planet fromJson(String json) {
-        return mapToPlanet(JsonPath.parse(json));
-    }
-
-    private static Planet mapToPlanet(DocumentContext json) {
+    public static Planet parse(DocumentContext json) {
         Planet planet = new Planet();
         planet.setName(json.read("$.name"));
         planet.setRotationPeriod(json.read("$.rotation_period"));
